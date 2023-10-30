@@ -1,8 +1,8 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import logo from './assets/logo.png';
-import './index.css'; 
+
 
 
 function Navbar() {
@@ -10,9 +10,10 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg bg-white">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
-                  <img src={logo} width="30" height="30" className="d-inline-block align-top" alt="" />
-                  <span className="navbar-title">NutriFit</span>
+                <img src={logo} width="30" height="30" className="d-inline-block align-top" alt="" />
+                <span style={{ marginLeft: '10px' }}>NutriFit</span>
                 </a>
+
                 <button className="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
