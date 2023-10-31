@@ -27,15 +27,15 @@
 }
 .MuscleButton:hover {
     background: linear-gradient(to bottom, #29a72290 5%, #30aa36ad 100%);
-    background-color: #0fffcb;
+    background-color: #DDF7E3;
 }
 .WeightButton:hover{
     background: linear-gradient(to bottom, #29a72290 5%, #30aa36ad 100%);
-    background-color: #0fffcb;
+    background-color: #DDF7E3;
 }
 .MaintainButton:hover{
     background: linear-gradient(to bottom, #29a72290 5%, #30aa36ad 100%);
-    background-color: #0fffcb;
+    background-color: #DDF7E3;
 }
 .WeightButtons:active {
     position: relative;
@@ -49,58 +49,120 @@
 .BodyGoal{
     width: 50%;
     height: 80%;
-    margin-top: 3%;
+    margin-top: 5%;
     margin-bottom: 5%;
 }
 
-.Age{
-    text-align: center;
+.Age {
+    display: block;
+    margin-left: 28%;
 }
-.EnterAge{
+
+.EnterAge {
+    font-size: 1.5em;
+    margin-right: 4%;
+}
+
+.Age input[type="text"]{
+    width: 60%; /* Adjust the width as needed, you can use percentage or pixels */
+    text-decoration: none;
+    padding: 0.7em 1.2em;
+    border: 2px solid #9e9e9e;
+    border-radius: .7em;
+}
+.Age input::placeholder {
+    font-size: 1.1em; /* Adjust the font size as needed */
+}
+.Gender {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.Gender label {
+    display: block;
+    margin-bottom: 1%;
+    width: 20%;
+    cursor: pointer; /* Add cursor pointer on labels */
+}
+
+.Gender input[type="radio"] {
+    display: none;
+}
+
+.Gender label::before {
+    content: " ";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 1px solid #000;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 0.5em;
+    transition: background-color 0.3s; /* Add a transition for smooth color change */
+}
+
+/* Change the background color to green when checked */
+.Gender input[type="radio"]:checked + label::before {
+    background-color:#32794F;
+    border: 1px solid black; /* Change the border color to green when checked */
+}
+
+/* Create a flex container for the labels */
+.Gender .labels-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.WhatGender {
+    font-size: 1.5em;
+    margin-left: 28%;
+    text-align: left;
+}
+
+.UserBody{
+    text-align: center;
+    margin-top: 3%;
     font-size: 1.5em;
 }
-.AgeDropdown{
-    background-color: #BEEBC2;
-    border: .1em solid #32794F;
-    color: black;
+.WhatWeight{
+    margin-top: 3%;
+    text-align: left;
+    margin-left: 28%;
+}
+.WhatHeight{
+    margin-top: 3%;
+    text-align: left;
+    margin-left: 28%;
+}
+.WhatMeal{
+    margin-top: 5%;
+    text-align: left;
+    margin-left: 28%;
+}
+.UserBody input::placeholder {
+    font-size: .75em; /* Adjust the font size as needed */
+}
+.UserBody input[type="text"] {
+    width: 45%; /* Adjust the width as needed, you can use percentage or pixels */
     text-decoration: none;
-    font-size: 1em;
-    padding: 0.5em 1em;
+    padding: 0.3em 1em;
+    border: 2px solid #9e9e9e;
     border-radius: .5em;
-    box-shadow: 0.2em 0.2em 0.3em rgba(0, 0, 0, 0.2);
+}
+
+.CreatePlan:hover{
+    background: linear-gradient(to bottom, #29a72290 5%, #30aa36ad 100%);
+    background-color: #0fffcb;
 }
 .BodyInfo{
     width: 50%;
     height: 73%;
-    margin-top: 3%;
+    margin-top: 5%;
     margin-bottom: 5%;
     
-}
-.Gender{
-    text-align: center;
-    margin-top: 5%;
-}
-.Gender label {
-    margin-left: 5%;
-    display: inline-block;
-    margin-bottom: 1%;
-    width: 25%;
-    margin-right: 0%;
-}
-.WhatGender{
-    font-size: 1.5em;
-    
-}
-.UserBody{
-    text-align: center;
-    margin-top: 5%;
-    font-size: 1.5em;
-}
-.WhatHeight{
-    margin-top: 3%;
-}
-.WhatMeal{
-    margin-top: 3%;
 }
 .CreatePlan {
     position: absolute;
@@ -116,12 +178,9 @@
     border: none;
     width: 30%;
 }
-.CreatePlan:hover{
-    background: linear-gradient(to bottom, #29a72290 5%, #30aa36ad 100%);
-    background-color: #0fffcb;
-}
 .Screen{
     height: 100vh;
     display: flex;
     justify-content: space-between;
+    background-color: #ffff;
 }
