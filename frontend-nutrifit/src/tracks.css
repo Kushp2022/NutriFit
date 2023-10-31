@@ -1,0 +1,32 @@
+.grid-container{
+        height: 100vh;
+        display: flex;
+
+}
+.first-half{
+    width: 50%;
+    margin-top: 5rem;
+    text-align: center;
+}
+.second-half{
+    width: 50%;
+    margin-top: 5rem;
+    text-align: center;
+}
+.Welcome-track {
+    padding: 4% 20% 4% 20%;
+    color: #32794F;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    /* 157.143% */
+}
+.cal-intake{
+        padding: 8% 0% 4% 0%;
+        color: #32794F;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 44px;
+}
