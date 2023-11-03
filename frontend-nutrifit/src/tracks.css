@@ -3,6 +3,13 @@
         display: flex;
 
 }
+.color_home {
+    color: black;
+}
+
+.color_track {
+    color: yellow;
+}
 .first-half{
     width: 50%;
     margin-top: 5rem;
