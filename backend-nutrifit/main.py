@@ -1,19 +1,19 @@
-from flask import Flask
-from flask import jsonify
-from flask_cors import CORS, cross_origin
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/members": {"origins": "http://localhost:5173"}})
+CORS(app)  # Enable CORS for all routes
 
-@app.route('/members', methods=['POST', 'GET'])
-@cross_origin()
-def members():
-    data = {"Members": ["Member1", "Member2", "Member3"]}
-    x = jsonify(data)
-    print(x)
-    print("HELLO")
-    return x
+user_responses = []  # To store user responses
+
+@app.route('/members', methods=['POST'])
+def add_member():
+    data = request.form  # Use request.form to access form-encoded data
+    user_responses.append(data)
+    print(user_responses)
+    return jsonify({'message': 'User response added successfully', 'UserData': user_responses})
+
 
 if __name__ == "__main__":
     app.run(debug=True)
