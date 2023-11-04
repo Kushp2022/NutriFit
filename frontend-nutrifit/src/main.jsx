@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import NavBar from "./navbar.jsx"
 import Track from "./tracks.jsx"
-
+import Load from "./load.jsx"
 
 import './index.css'
 
@@ -21,6 +21,7 @@ const router = createBrowserRouter([
     element: (
       <div>
         <NavBar />
+        <Load />
       </div>
     ),
   },
