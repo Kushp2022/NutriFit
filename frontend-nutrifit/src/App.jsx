@@ -6,20 +6,23 @@ function App() {
   const [data, setData] = useState({ Members: [] });
 
   useEffect(() => {
-    fetch('http://localhost:5000/members', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-    .then(function(response) {
-      console.log(response);
-      return response.json();
-    })
-    .then(function(myJson) {
-      console.log(myJson);
-      setData(myJson);
-    });
+  fetch('http://localhost:5000/members', {
+  method: 'GET', // Explicitly specify the method
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  },
+  mode: 'cors', // Use CORS mode
+})
+.then(function(response) {
+  console.log(response);
+  return response.json();
+})
+.then(function(myJson) {
+  console.log(myJson);
+  setData(myJson);
+});
+
   }, []);  
 
   return (

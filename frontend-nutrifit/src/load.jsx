@@ -37,7 +37,7 @@ function Load() {
         </p>
       </div>
       <div className='button-start'>
-        <a class="button-5" href="/home">Get Started!</a>
+        <a className="button-5" href="/home">Get Started!</a>
 
       </div>
     </div>
