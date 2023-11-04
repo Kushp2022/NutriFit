@@ -26,11 +26,22 @@ const Typewriter = ({ text, delay }) => {
 };
 
 function Load() {
-    return(
-        <div className="LoadScreen">
-            
-        </div>
-    );
+  return (
+    <div className='full-screen-background'>
+      <div className='title'>
+        <p className='title-nutrifit'>
+         Welcome To NutriFit
+        </p>
+        <p className='text-type'>
+            <Typewriter text="Where Health Meets Technology" delay={200} />
+        </p>
+      </div>
+      <div className='button-start'>
+        <a class="button-5" href="/home">Get Started!</a>
+
+      </div>
+    </div>
+  );
 }
 
 export default Load;
