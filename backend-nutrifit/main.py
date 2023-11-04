@@ -1,6 +1,9 @@
-from flask import Flask
-from flask import jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
+from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
+from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
+from clarifai_grpc.grpc.api.status import status_code_pb2
+import openai
 
 app = Flask(__name__)
 
@@ -15,6 +18,18 @@ def add_member():
     print(user_responses)
     return jsonify({'message': 'User response added successfully', 'UserData': user_responses})
 
+# Your PAT (Personal Access Token) can be found in the portal under Authentification
+PAT = 'a65b72d6935f4d0e83a5b09076a1bebb'
+# Specify the correct user_id/app_id pairings
+# Since you're making inferences outside your app's scope
+USER_ID = 'kevinroy12'
+APP_ID = 'Food_Detection'
+# Change these to whatever model and image URL you want to use
+MODEL_ID = 'food-item-recognition'
+MODEL_VERSION_ID = '1d5fd481e0cf4826aa72ec3ff049e044'
+
+openai_key = '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'
+openai.api_key = openai_key
 
 
 CORS(app, resources={r"/food": {"origins": "http://localhost:5173"}})
