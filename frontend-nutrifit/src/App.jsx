@@ -3,25 +3,24 @@ import React, {useEffect} from 'react'
 import './App.css'
 
 function App() {
+  const [data, setData] = useState({ Members: [] });
+
   useEffect(() => {
-    fetch("/members")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        console.log(response); // Add this line to inspect the response
-        return response.json();
-      })
-      .then(data => {
-        setData(data);
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('Error fetching bla:', error);
-      });
-  }, []);
-
-
+    fetch('http://localhost:5000/members', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(function(response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function(myJson) {
+      console.log(myJson);
+      setData(myJson);
+    });
+  }, []);  
 
   return (
     <div className="Screen">
