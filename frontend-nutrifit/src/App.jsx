@@ -1,7 +1,27 @@
 import { useState } from 'react'
+import React, {useEffect} from 'react'
 import './App.css'
 
 function App() {
+  useEffect(() => {
+    fetch("/members")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log(response); // Add this line to inspect the response
+        return response.json();
+      })
+      .then(data => {
+        setData(data);
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error fetching bla:', error);
+      });
+  }, []);
+
+
 
   return (
     <div className="Screen">
@@ -25,13 +45,13 @@ function App() {
           <p className="WhatGender">Gender</p>
           <div className="labels-container">
             <input type="radio" id="male" name="gender" value="male" />
-            <label for="male">Male</label>
+            <label htmlFor="male">Male</label>
 
             <input type="radio" id="female" name="gender" value="female" />
-            <label for="female">Female</label>
+            <label htmlFor="female">Female</label>
           
             <input type="radio" id="PreferNotToSpecify" name="gender" value="Prefer Not to Specify" />
-            <label for="PreferNotToSpecify">Prefer Not to Specify</label>
+            <label htmlFor="PreferNotToSpecify">Prefer Not to Specify</label>
           </div>
         </div>
         <div className="UserBody">
