@@ -7,6 +7,7 @@ function Track() {
   const [filePreview, setFilePreview] = useState('');
   const [isImageSelected, setIsImageSelected] = useState(false);
   const [file, setFile] = useState(null);
+<<<<<<< Updated upstream
   const [fileUrl, setFileUrl] = useState(null);
   const [aiData, setAIData] = useState({ Food: '', Response: '' });
 
@@ -15,6 +16,13 @@ function Track() {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
 
+=======
+  const [data, setData] = useState(null);
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    
+>>>>>>> Stashed changes
     if (selectedFile) {
       const reader = new FileReader();
       reader.onload = (event) => {
@@ -30,6 +38,7 @@ function Track() {
   };
 
   const handleUpload = () => {
+<<<<<<< Updated upstream
     if (file) {
       const formData = new FormData();
       formData.append('file', file);
@@ -65,6 +74,21 @@ function Track() {
       });
 
   return (
+=======
+    fetch('http://localhost:5000/food', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Handle the response from the backend as needed
+            setData(data["Response"])
+            console.log(data)
+          });
+  }
+>>>>>>> Stashed changes
     <div className='grid-container'>
       <div className='first-half'>
         <div className='Welcome-track'>
@@ -119,6 +143,12 @@ function Track() {
         <div className='output-api'>
           <p>{aiData.Response}</p>
         </div>
+<<<<<<< Updated upstream
+=======
+        <div className='output-api'>
+              <p>AI Response: {data} </p>
+        </div>
+>>>>>>> Stashed changes
         </div>
       </div>
       <div className='second-half'>
@@ -127,7 +157,7 @@ function Track() {
         </div>
       </div>
     </div>
-  );
-}
+  
 
+  }
 export default Track;
