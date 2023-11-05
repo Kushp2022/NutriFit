@@ -1,13 +1,14 @@
-from website import create_app
+from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
+from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
+from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
+from clarifai_grpc.grpc.api.status import status_code_pb2
+import openai
 
-app = create_app()
+app = Flask(__name__)
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
-<<<<<<< Updated upstream
+CORS(app)  # Enable CORS for all routes
     
-=======
 user_responses = {}  # To store user responses
 
 @app.route('/members', methods=['POST'])
@@ -127,4 +128,3 @@ def calorieCalc(gender, goal, weight, height, age):
 
 if __name__ == "__main__":
     app.run(debug=True)
->>>>>>> Stashed changes
