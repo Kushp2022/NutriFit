@@ -7,9 +7,13 @@ function Track() {
   const [filePreview, setFilePreview] = useState('');
   const [isImageSelected, setIsImageSelected] = useState(false);
   const [file, setFile] = useState(null);
+  const [fileUrl, setFileUrl] = useState(null);
+  const [aiData, setAIData] = useState({ Food: '', Response: '' });
+
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
+    setFile(selectedFile);
 
     if (selectedFile) {
       const reader = new FileReader();
@@ -27,12 +31,38 @@ function Track() {
 
   const handleUpload = () => {
     if (file) {
-      // Perform a backend operation using the 'file' variable
-      // You can make a fetch request or use any other method to send the file to the backend
-      // For demonstration, we'll just log the file details here
-      console.log('Uploading file:', file);
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('fileUrl', fileUrl);
+      fetch('http://localhost:5000/upload', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setFileUrl(data.url);
+        })
+        .catch((error) => {
+          console.error('Error uploading the file:', error);
+        });
     }
-  };
+  };  
+
+  fetch('http://localhost:5000/food', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({fileUrl: fileUrl}).toString(),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the backend as needed
+        setAIData(data)
+        console.log(data);
+        window.location.href = "/food";
+      });
 
   return (
     <div className='grid-container'>
@@ -42,7 +72,7 @@ function Track() {
         </div>
         <div className='upload-pic'>
           <div className='yourmeal'>
-            <p>Your Document</p>
+            <p></p>
           </div>
           <div className='pic-meal'>
             <p>Add a document below</p>
@@ -84,9 +114,11 @@ function Track() {
    
           </div>
         <div className='rec-try'>
-            <p>Here is our Recommendation</p>
+            <p>Here's our Recommendation</p>
         </div>
-        <div className='output-api'></div>
+        <div className='output-api'>
+          <p>{aiData.Response}</p>
+        </div>
         </div>
       </div>
       <div className='second-half'>
